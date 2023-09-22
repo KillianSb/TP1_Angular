@@ -1,0 +1,44 @@
+<p>carbon-footprint works!</p>
+<app-carbon-footprint-form></app-carbon-footprint-form>
+<app-carbon-footprint-result></app-carbon-footprint-result>
+
+
+<h2>Consomation :</h2>
+<p>Distance : {{distanceKmParcouru | number: '1.0-0'}} Km</p>
+<p>Distance Moyenne: {{distanceMoyenneKm | number: '1.0-0'}} Km</p>
+<p>Consommation Total: {{consommationTotal | number: '1.0-2'}} L</p>
+<p>Consommation Moyenne: {{consommationMoyennePour100Km | number: '1.0-2'}} L</p>
+<p>Quantité Moyen CO2: {{quantiteCO2Total | number: '1.0-0'}}</p>
+
+<button type="button" (click)="plus100($event)">+100</button><br>
+
+<br>
+
+<span *ngIf="consommationMoyennePour100Km > 7" [ngStyle]="{'color': 'red'}">Attention, votre consommation est élevée</span>
+<span *ngIf="consommationMoyennePour100Km < 4" [ngStyle]="{'color': 'green'}">Félicitations, votre consommation est faible</span>
+
+<br>
+
+<span *ngIf="distanceMoyenneKm > 500" [className]="'haute-distance'" [ngStyle]="{'color': 'red'}" translate>Plus de 500 Km</span>
+<span *ngIf="distanceMoyenneKm < 100" [className]="'basse-distance'" [ngStyle]="{'color': 'green'}" translate>Moins de 100 Km</span>
+
+<br><br>
+
+<button type="button" (click)="ajoutVoyage($event)">Ajouter un voyage !</button>
+
+<br><br>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3">Liste des Voyages</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let voyage of voyages">
+      <td>Distance : {{ voyage.distanceKm }} KM</td>
+      <td>consomation : {{ voyage.consommationPour100Km }} L</td>
+      <td>CO2 : {{ voyage.quantiteCO2 | number: '1.0-0' }}</td>
+    </tr>
+  </tbody>
+</table>

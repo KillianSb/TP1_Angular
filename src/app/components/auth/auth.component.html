@@ -1,0 +1,22 @@
+<p>auth works!</p>
+
+<div class="login-box">
+  <h2>Connexion</h2>
+  <form #userlogin = "ngForm" (ngSubmit) = "login(userlogin.value)">
+    <div class="user-box">
+      <input type="text" name="user" required="required" ngModel>
+      <label>Username</label>
+    </div>
+    <div class="user-box">
+      <input type="password" name="pass" required="required" ngModel>
+      <label>Password</label>
+    </div>
+    <button type="submit">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Submit
+    </button>
+  </form>
+</div>
